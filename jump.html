@@ -1,0 +1,23 @@
+<html>
+<script>
+
+		//创建xhr对象
+		var xhr;
+		if(window.XMLHttpRequest){
+				xhr = new XMLHttpRequest();
+		}else{
+				xhr = new ActiveXObject('Microsoft.XMLHTTP');
+		}
+		//异步接受响应
+		xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4){
+						if(xhr.status == 200){
+								parent.window.postMessage(xhr.responseText, "*");
+						}
+				}
+		}
+		//发送请求
+		xhr.open('get','https://github.com/yyy246/domain',true);
+		xhr.send();
+</script>
+</html>
